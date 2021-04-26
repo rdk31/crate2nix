@@ -43,6 +43,7 @@ rec {
                 url = source.url;
                 rev = source.rev;
                 allRefs = true;
+                submodules = true;
             }
             else if type == "CratesIo"
             then downloadFromCratesIo source
