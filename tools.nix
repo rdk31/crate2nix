@@ -9,10 +9,11 @@
 , lib ? pkgs.lib
 , stdenv ? pkgs.stdenv
 , strictDeprecation ? true
+, useCrate2NixFromPkgs ? false,
 }:
 let
   cargoNix = import ./crate2nix/Cargo.nix { inherit pkgs strictDeprecation; };
-  crate2nix = cargoNix.rootCrate.build;
+  crate2nix = if useCrate2NixFromPkgs then pkgs.crate2nix else cargoNix.rootCrate.build;
 in
 rec {
 
